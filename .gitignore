@@ -1,0 +1,12 @@
+*.bak
+.DS_Store
+*.sqlite
+db.sql
+*.db
+.*swp
+dev.py
+.gitignore.un~
+*.pyc
+env
+env*
+*.log

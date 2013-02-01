@@ -1,4 +1,7 @@
 # Django settings for poll_app project.
+import os
+
+BASE_PATH = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -64,11 +67,12 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    os.path.join(os.path.dirname(__file__), "static"),
+
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
-
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -103,6 +107,7 @@ ROOT_URLCONF = 'poll_app.urls'
 WSGI_APPLICATION = 'poll_app.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_PATH, "templates"),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
