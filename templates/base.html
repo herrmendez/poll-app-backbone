@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+  <head>
+    <title>{% block title %}Test{% endblock %}</title>
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="{{ STATIC_URL }}css/style.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    {% block page_content %}
+
+    {% endblock %}
+
+    {% block scripts %}
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+    {% endblock %}
+  </body>
+</html>
+
