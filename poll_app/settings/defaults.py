@@ -1,7 +1,7 @@
 # Django settings for poll_app project.
 import os
 
-BASE_PATH = os.path.dirname(os.path.dirname(__file__))
+BASE_PATH = os.path.abspath(os.path.join(__file__, '..', '..', '..'))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
