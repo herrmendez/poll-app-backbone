@@ -11,3 +11,4 @@ def api_key(request):
         return { 'api_key': api_key.key}
     except:
         logger.error("anonymous users don't have an api_key")
+        return {}

@@ -3,6 +3,7 @@
 {% block page_content %}
 <h1>Index</h1>
 <hr />
+
 <div class="page">
 
 
@@ -42,7 +43,7 @@
     </script>
     <script>
         var Polls = Backbone.Collection.extend({
-            url: '/polls/api/v1/poll/?format=json',
+            url: '/polls/api/v1/poll/?username={{ user.username }}&api_key={{ api_key }}&format=json',
         });
 
         var PollList = Backbone.View.extend({
