@@ -17,6 +17,7 @@
             <thead>
                 <tr>
                     <th>Question</th>
+                    <th>Options</th>
                     <th>Date</th>
                     <th></th>
                 </tr>
@@ -25,6 +26,15 @@
                 <% _.each(polls, function(poll) { %>
                     <tr> 
                         <td><%= poll.get('question') %></td>
+                        <td>
+                            
+                            <ul>
+                                <% _.each(poll.choices, function(choice) { %>
+                                    <% console.log(choice); %>
+                                <li><%= choice.get('choice') %>x</li>
+                            <% }); %>
+                            </ul>
+                        </td>
                         <td><%= poll.get('pub_date') %></td>
                         <td></td>
                     </tr>
@@ -35,11 +45,6 @@
     <script>
         var Polls = Backbone.Collection.extend({
             url: '/polls/api/v1/poll/?format=json',
-            // necessary because backbone expects an array of objects and
-            // tastypie returns this array under the "objects" property
-            parse: function(response) {
-                return response.objects;
-            }
         });
 
         var PollList = Backbone.View.extend({
