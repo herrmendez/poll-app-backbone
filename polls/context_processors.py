@@ -8,6 +8,6 @@ def api_key(request):
     user = request.user
     try:
         api_key = ApiKey.objects.get(user=user)
-        return api_key.key
+        return { 'api_key': api_key.key}
     except:
         logger.error("anonymous users don't have an api_key")
