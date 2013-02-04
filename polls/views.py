@@ -1,8 +1,6 @@
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-
+from django.shortcuts import render
 
 def index(request):
-    return render_to_response('polls/index.html', {}, RequestContext(request) )
+    return render(request, 'polls/index.html', {})
 
 
