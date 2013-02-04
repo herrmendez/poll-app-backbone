@@ -12,12 +12,51 @@
 {% block scripts %}
 
     {{ block.super }}
-
+    <script type="text/template" id="poll-list-template">
+        <table class="table striped">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% _.each(polls, function(poll) { %>
+                    <tr> 
+                        <td><%= poll.get('question') %></td>
+                        <td><%= poll.get('pub_date') %></td>
+                        <td></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </script>
     <script>
+        var Polls = Backbone.Collection.extend({
+            url: '/polls/api/v1/poll/?format=json',
+            // necessary because backbone expects an array of objects and
+            // tastypie returns this array under the "objects" property
+            parse: function(response) {
+                return response.objects;
+            }
+        });
+
         var PollList = Backbone.View.extend({
             el: '.page',
             render: function() {
-                this.$el.html('!CONTENT SHOULD SHOW HERE!');
+                // quick hack to get "this" and use it out of scope
+                var that = this;
+                var polls = new Polls();
+                // get the data
+                polls.fetch({
+                    // on success...
+                    success: function(polls) {
+                        var template = _.template($("#poll-list-template").html(), 
+                            {polls: polls.models});
+                        that.$el.html(template);
+                    }
+                });
             }
         });
 
