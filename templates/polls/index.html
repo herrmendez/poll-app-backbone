@@ -14,14 +14,25 @@
     {{ block.super }}
 
     <script>
+        var PollList = Backbone.View.extend({
+            el: '.page',
+            render: function() {
+                this.$el.html('!CONTENT SHOULD SHOW HERE!');
+            }
+        });
+
         var Router = Backbone.Router.extend({
             routes: {
                 '': 'home'
             }
         });
+
+        var pollList = new PollList();
+
         var router = new Router();
+
         router.on('route:home', function() {
-            console.log('we have loaded the home page');
+            pollList.render();
         });
         // to tell backbone to start listening to the url
         Backbone.history.start();
