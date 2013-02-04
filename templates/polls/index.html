@@ -27,11 +27,9 @@
                     <tr> 
                         <td><%= poll.get('question') %></td>
                         <td>
-                            
-                            <ul>
-                                <% _.each(poll.choices, function(choice) { %>
-                                    <% console.log(choice); %>
-                                <li><%= choice.get('choice') %>x</li>
+                            <ul><% var choices = poll.get('choices') %>
+                                <% _.each(choices, function(choice) { %>
+                                <li><%= choice.choice %></li>
                             <% }); %>
                             </ul>
                         </td>
