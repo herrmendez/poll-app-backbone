@@ -6,8 +6,8 @@
 
 <div class="page">
 
-
 </div> <!-- /.page -->
+<a class="btn" href="#">Create New</a>
 {% endblock %}
 
 {% block scripts %}
@@ -20,22 +20,22 @@
                     <th>Question</th>
                     <th>Options</th>
                     <th>Date</th>
-                    <th></th>
+                    <th>Options</th>
                 </tr>
             </thead>
             <tbody>
                 <% _.each(polls, function(poll) { %>
                     <tr> 
-                        <td><%= poll.get('question') %></td>
+                        <td><%- poll.get('question') %></td>
                         <td>
                             <ul><% var choices = poll.get('choices') %>
                                 <% _.each(choices, function(choice) { %>
-                                <li><%= choice.choice %></li>
+                                    <li><%- choice.choice %></li>
                             <% }); %>
                             </ul>
                         </td>
-                        <td><%= poll.get('pub_date') %></td>
-                        <td></td>
+                        <td><%- poll.get('pub_date') %></td>
+                        <td>Edit - Delete</td>
                     </tr>
                 <% }); %>
             </tbody>
