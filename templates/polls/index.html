@@ -43,6 +43,19 @@
             </tbody>
         </table>
     </script>
+
+    <script type="text/template" id="edit-poll-template">
+        <form class="edit-poll-form">
+            <legend>Create Poll</legend>
+            <label>Question: </label>
+            <input type="text" name="question" />
+            <label>Publication date: </label>
+            <input type="text" name="pub_date" id="pub_date" />
+            <hr />
+            <button type="submit" class="btn">Create</label>
+        </form>
+    </script>
+
     <script>
         var Polls = Backbone.Collection.extend({
             url: '/polls/api/v1/poll/?username={{ user.username }}&api_key={{ api_key }}&format=json',
@@ -69,7 +82,8 @@
         var EditPoll = Backbone.View.extend({
             el: '.page',
             render: function() {
-                this.$el.html('Show the form here');
+                var template = _.template($("#edit-poll-template").html(), {});
+                this.$el.html(template);
             }
         });
 
