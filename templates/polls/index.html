@@ -66,14 +66,22 @@
             }
         });
 
+        var EditPoll = Backbone.View.extend({
+            el: '.page',
+            render: function() {
+                this.$el.html('Show the form here');
+            }
+        });
+
         var Router = Backbone.Router.extend({
             routes: {
                 '': 'home',
                 'new': 'editPoll'
             }
         });
-
+        // create the views instances
         var pollList = new PollList();
+        var editPoll = new EditPoll();
 
         var router = new Router();
 
@@ -81,7 +89,7 @@
             pollList.render();
         });
         router.on('route:editPoll', function() {
-            console.log('test');
+            editPoll.render();
         });
 
         // to tell backbone to start listening to the url
