@@ -22,3 +22,10 @@ $.fn.serializeObject = function()
     });
     return o;
 };
+
+//Backbone.Tastypie.csrfToken = $('meta[name="csrf-token"]').attr('content');
+Backbone.Tastypie.csrfToken = $.cookie('csrftoken');
+Backbone.Tastypie.apiKey = {
+    username: USER,
+    key: API_KEY
+};

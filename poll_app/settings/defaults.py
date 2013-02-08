@@ -65,6 +65,8 @@ STATIC_ROOT = ''
 # Example: "http://media.lawrence.com/static/"
 STATIC_URL = '/static/'
 
+APPEND_SLASH=False
+
 # Additional locations of static files
 STATICFILES_DIRS = (
     os.path.join(BASE_PATH + "/poll_app/", "static"),

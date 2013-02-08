@@ -39,7 +39,7 @@
 	Backbone.sync = function( method, model, options ) {
 		if ( Backbone.Tastypie.apiKey && Backbone.Tastypie.apiKey.username.length ) {
 			options.headers = _.extend( {
-				'Authorization': 'ApiKey ' + Backbone.Tastypie.apiKey.username + ':' + Backbone.Tastypie.apiKey.key
+				'Authorization': ' ApiKey ' + Backbone.Tastypie.apiKey.username + ':' + Backbone.Tastypie.apiKey.key
 			}, options.headers );
 		}
 

@@ -58,7 +58,15 @@
 
     <script>
         var Polls = Backbone.Collection.extend({
-            url: '/polls/api/v1/poll/?username={{ user.username }}&api_key={{ api_key }}&format=json',
+            url: '/api/v1/poll/?username='+USER+'&api_key='+API_KEY+'&format=json',
+        });
+
+        var Poll = Backbone.Model.extend({
+            urlRoot: '/api/v1/poll',
+
+            //pub_date: function() {
+            //    return new Date(this.get('pub_date'));
+            //}
         });
 
         var PollList = Backbone.View.extend({
@@ -84,6 +92,25 @@
             render: function() {
                 var template = _.template($("#edit-poll-template").html(), {});
                 this.$el.html(template);
+            },
+            events: {
+                //listen for submition of the form
+                'submit .edit-poll-form': 'savePoll'
+            },
+            savePoll: function(ev) {
+                var temp = $(ev.currentTarget).serializeObject();
+                var poll = new Poll();
+                poll.save(temp, { 
+                    success: function(poll) {
+                        console.log(poll);
+                        //redirect to index
+                        router.navigate('', {trigger: true});
+                    },
+                    error: function(poll) {
+                        console.log(poll);
+                    }
+                });
+                return false;
             }
         });
 
